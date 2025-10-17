@@ -70,3 +70,103 @@
     <div class="logo">
       <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jus1realty logo">
         <defs>
+          <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#f5f5f5" />
+            <stop offset="1" stop-color="#cccccc" />
+          </linearGradient>
+        </defs>
+        <rect width="100" height="100" rx="18" fill="#0A1226" />
+        <text x="50%" y="50%" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="28" fill="url(#g1)" dy=".3em">1%</text>
+      </svg>
+      <div>
+        <div class="brand">Jus1realty</div>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <button id="btnHU" class="active" onclick="setLang('hu')">HU</button>
+      <button id="btnEN" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 id="headline">Fix 1% közvetítői díj minden megbízásnál</h1>
+      <p id="subtext">Jus1realty Budapest központú ingatlaniroda, ahol a gyors értékesítés és személyre szabott szolgáltatás az elsődleges cél.</p>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-box">
+      <h3>1% Díj</h3>
+      <p>A legalacsonyabb közvetítői jutalék Budapesten.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Gyors Értékesítés</h3>
+      <p>Hatékony marketing és széles vevői adatbázis.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Prémium Szolgáltatás</h3>
+      <p>Legmagasabb minőségű lakásfotók és hirdetéskezelés.</p>
+    </div>
+  </section>
+
+  <section class="contact-form">
+    <h2>Kérjen ajánlatot</h2>
+    <form action="https://formsubmit.co/just1realty@gmail.com" method="POST">
+      <input type="hidden" name="_next" value="https://jus1realty.vercel.app/">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Név" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" placeholder="Üzenet" rows="4"></textarea>
+      <button type="submit">Küldés</button>
+    </form>
+  </section>
+
+  <div class="footer-contact">
+    Telefonszám: <a href="tel:+36305022115">+36 30 502 2115</a> | Email: <a href="mailto:just1realty@gmail.com">just1realty@gmail.com</a>
+  </div>
+
+  <script>
+    const translations = {
+      hu: {
+        headline: "Fix 1% közvetítői díj minden megbízásnál",
+        subtext: "Jus1realty Budapest központú ingatlaniroda, ahol a gyors értékesítés és személyre szabott szolgáltatás az elsődleges cél.",
+        features: [
+          {title:"1% Díj", text:"A legalacsonyabb közvetítői jutalék Budapesten."},
+          {title:"Gyors Értékesítés", text:"Hatékony marketing és széles vevői adatbázis."},
+          {title:"Prémium Szolgáltatás", text:"Legmagasabb minőségű lakásfotók és hirdetéskezelés."}
+        ],
+        contact: "Kérjen ajánlatot",
+        send: "Küldés"
+      },
+      en: {
+        headline: "Fixed 1% commission fee for every assignment",
+        subtext: "Jus1realty is a Budapest-based real estate agency focused on fast sales and personalized service.",
+        features: [
+          {title:"1% Fee", text:"The lowest commission in Budapest."},
+          {title:"Fast Sales", text:"Efficient marketing and a wide buyer database."},
+          {title:"Premium Service", text:"Highest quality property photos and ad management."}
+        ],
+        contact: "Request an offer",
+        send: "Send"
+      }
+    };
+
+    function setLang(lang){
+      document.getElementById('headline').textContent = translations[lang].headline;
+      document.getElementById('subtext').textContent = translations[lang].subtext;
+      const boxes = document.querySelectorAll('.feature-box');
+      translations[lang].features.forEach((f,i)=>{
+        boxes[i].querySelector('h3').textContent=f.title;
+        boxes[i].querySelector('p').textContent=f.text;
+      });
+      document.querySelector('.contact-form h2').textContent=translations[lang].contact;
+      document.querySelector('.contact-form button').textContent=translations[lang].send;
+      document.getElementById('btnHU').classList.toggle('active', lang==='hu');
+      document.getElementById('btnEN').classList.toggle('active', lang==='en');
+    }
+  </script>
+
+</body>
+</html>
